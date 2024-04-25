@@ -4,7 +4,7 @@
 Este aplicativo permite aos usuários explorar um vasto universo Pokémon, com acesso a informações detalhadas sobre cada Pokémon. Os usuários podem visualizar estatísticas, habilidades e tipos, tudo em uma interface interativa e atraente.
 
 ## Funcionalidades
-- **Listagem de Pokémon**: Os usuários podem navegar por uma lista extensiva de Pokémon, com a capacidade de carregar mais itens conforme avançam.
+- **Listagem de Pokémon**: Os usuários podem navegar por uma lista extensiva de Pokémons.
 - **Detalhes do Pokémon**: Ao selecionar um Pokémon específico, os usuários podem ver informações detalhadas como altura, peso, tipos e habilidades.
 - **Interface Temática**: O aplicativo possui animações e temas visuais inspirados no mundo Pokémon, oferecendo uma experiência envolvente.
 
