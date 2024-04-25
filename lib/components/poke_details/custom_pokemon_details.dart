@@ -30,14 +30,34 @@ class CustomPokeDetails extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Row(
-                children: [
-                Text(capitalizeFirstLetter(name), style: BOLD_TITLE_STYLE_WHITE),
-                const Spacer(),
-                Text(' #$id', style: BOLD_TITLE_STYLE_WHITE),
-              ],),
+              child: Expanded(
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        capitalizeFirstLetter(name),
+                        style: boldTitleStyleWhite,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    Spacer(),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        ' #$id',
+                        style: boldTitleStyleWhite,
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                  ],
+                )
+                ,
+              ),
             ),
-            CachedNetworkImage(imageUrl: imageUrl, height: MediaQuery.sizeOf(context).height*0.35, filterQuality: FilterQuality.high,placeholder: (context, url) => const Center(
+            CachedNetworkImage(
+              errorWidget: (context, url, error) => Image.asset('assets/images/pikachu_error_image',height: MediaQuery.sizeOf(context).height*0.35,),
+              imageUrl: imageUrl, height: MediaQuery.sizeOf(context).height*0.35, filterQuality: FilterQuality.high,placeholder: (context, url) => const Center(
               child: Padding(
                 padding: EdgeInsets.all(8.0),
                 child: PokeballSpinner(width: 50,height: 50,),

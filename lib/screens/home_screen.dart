@@ -43,10 +43,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('PokeApp',style: BOLD_TITLE_STYLE_BLACK),
+        title: Text('PokeApp',style: boldTitleStyleBlack),
         backgroundColor: BACKGROUND,
       ),
       backgroundColor: BACKGROUND,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showOptions(context);
+        },
+        backgroundColor: Colors.yellow,
+        child: const Icon(Icons.more_vert),
+      ),
       body: Align(
         alignment: Alignment.center,
         child: SizedBox(
@@ -69,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: pokemonStore.isFetchingList ? const Center(
                         child: PokeballSpinner(width: 100,height: 100,)) : GridView.builder(
                       controller: _scrollController,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 2,
                         mainAxisSpacing: 5,
@@ -78,7 +85,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: pokemonStore.pokemons.length,
                       itemBuilder: (context, index) {
                         var pokemon = pokemonStore.pokemons[index];
-                        print('IMAGE URL ' + pokemon.imageUrl.toString());
                         return CustomPokeCard(
                           action: () {
                             Navigator.push(
@@ -99,8 +105,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     ),
                   ),
-                  Visibility(child: SizedBox(height: 20),
-                      visible: pokemonStore.isFetchingMore),
                   Visibility(
                     visible: pokemonStore.isFetchingMore,
                     child: Center(child: Image.asset('assets/gifs/pika_loader.gif',),),
@@ -111,6 +115,45 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
     ),
+    );
+  }
+  void _showOptions(BuildContext context) {
+    showModalBottomSheet(
+
+      showDragHandle: true,
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                  leading: const Icon(Icons.refresh, color: Colors.green),
+                  title: Text('Reload Pokémon',style: labelStyleBlack,),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
+                  }),
+              ListTile(
+                leading: const Icon(Icons.arrow_upward, color: Colors.blue),
+                title: Text('Go to Top',style: labelStyleBlack,),
+                onTap: () {
+                  Navigator.pop(context);
+                  _scrollController.animateTo(
+                    0,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeInOut,
+                  );
+                },
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

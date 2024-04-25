@@ -62,12 +62,14 @@ class PokemonSpecies {
 
 class PokemonAbout {
   final String text;
+  final String language;
 
-  PokemonAbout({required this.text});
+  PokemonAbout({required this.text, required this.language});
 
   factory PokemonAbout.fromJson(Map<String, dynamic> json) {
     return PokemonAbout(
       text: json['flavor_text'] ?? 'Unknown',
+      language: json['language']['name'] ?? 'Unknown',
     );
   }
 }

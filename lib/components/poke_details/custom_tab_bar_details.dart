@@ -32,13 +32,13 @@ class _TabBarDetailsState extends State<TabBarDetails> {
                   Tab(
                     child: Text(
                     'About',
-                    style: BOLD_LABEL_STYLE_WHITE,
+                    style: boldLabelStyleWhite,
                    ),
                   ),
                   Tab(
                     child: Text(
                     'Stats',
-                    style: BOLD_LABEL_STYLE_WHITE,
+                    style: boldLabelStyleWhite,
                    ),
                   ),
 
@@ -50,7 +50,7 @@ class _TabBarDetailsState extends State<TabBarDetails> {
               children: [
                 Padding(
                   padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height* 0.025, left: 20, right: 20),
-                  child: Text(removeLines(widget.about),style: LABEL_STYLE_WHITE,),
+                  child: Text(removeLines(widget.about),style: labelStyleWhite,),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: MediaQuery.of(context).size.height* 0.025, left: 20, right: 20),
@@ -62,26 +62,26 @@ class _TabBarDetailsState extends State<TabBarDetails> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Height',style: LABEL_STYLE_WHITE,),
-                              Text('${widget.height / 10}m',style: BOLD_LABEL_STYLE_WHITE),
+                              Text('Height',style: labelStyleWhite,),
+                              Text('${widget.height / 10}m',style: boldLabelStyleWhite),
                             ],
                           ),
                           SizedBox(width: 20),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('Weight',style: LABEL_STYLE_WHITE,),
-                              Text('${widget.weight / 10}kg',style: BOLD_LABEL_STYLE_WHITE),
+                              Text('Weight',style: labelStyleWhite,),
+                              Text('${widget.weight / 10}kg',style: boldLabelStyleWhite),
                             ],
                           ),
                         ],
                       ),
                       SizedBox(height: 20),
-                      Text('Types',style: LABEL_STYLE_WHITE),
-                      Text(widget.types.map((type) => type.name).join(', '),style: BOLD_LABEL_STYLE_WHITE),
+                      Text('Types',style: labelStyleWhite),
+                      Text(widget.types.map((type) => type.name).join(', '),style: boldLabelStyleWhite),
                       SizedBox(height: 20),
-                      Text('Abilities',style: LABEL_STYLE_WHITE),
-                      Text(widget.abilities.map((ability) => ability.name).join(', '),style: BOLD_LABEL_STYLE_WHITE),
+                      Text('Abilities',style: labelStyleWhite),
+                      Text(widget.abilities.map((ability) => ability.name).join(', '),style: boldLabelStyleWhite),
             
                     ],
                   ),

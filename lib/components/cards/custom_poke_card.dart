@@ -60,7 +60,7 @@ class _CustomPokeCardState extends State<CustomPokeCard> {
                     alignment: Alignment.topLeft,
                     child: Text(
                       capitalizeFirstLetter(widget.pokemonName),
-                      style: BOLD_LABEL_STYLE_WHITE,
+                      style: boldLabelStyleWhite,
                     ),
 
                   ),
@@ -69,19 +69,23 @@ class _CustomPokeCardState extends State<CustomPokeCard> {
                   bottom: 0,
                   top: 20,
                   right: 0,
-                  child: CachedNetworkImage(
-                    imageUrl: widget.imageUrl ?? '',
-                    placeholder: (context, url) => const Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: PokeballSpinner(width: 50,height: 50,),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CachedNetworkImage(
+                      errorWidget: (context, url, error) => const Icon(Icons.error, color: Colors.red,size: 50,),
+                      imageUrl: widget.imageUrl ?? '',
+                      placeholder: (context, url) => const Center(
+                        child: Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: PokeballSpinner(width: 40,height: 40,),
+                        ),
                       ),
-                    ),
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    fit: BoxFit.contain,
-                    alignment: Alignment.centerRight,
-                    filterQuality: FilterQuality.high,
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      fit: BoxFit.contain,
+                      alignment: Alignment.centerRight,
+                      filterQuality: FilterQuality.high,
 
+                    ),
                   ),
                 )
 

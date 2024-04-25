@@ -4,15 +4,15 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:poke_app/components/poke_details/custom_pokemon_details.dart';
 import '../components/DialogError/dialog_error.dart';
 import '../components/poke_details/custom_tab_bar_details.dart';
-import '../components/pokeball_spinner/pokeball_spinner.dart';
 import '../constants/color_themes.dart';
+import '../models/pokemon_details.dart';
 import '../stores/pokemon_store.dart';
 
 class DetailsScreen extends StatefulWidget {
   final String url;
   final PokemonStore pokemonStore;
 
-  DetailsScreen({required this.url, required this.pokemonStore});
+  const DetailsScreen({super.key, required this.url, required this.pokemonStore});
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -28,6 +28,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   }
 
+  @override
   Widget build(BuildContext context) {
     return Observer(
           builder: (_) {
@@ -50,11 +51,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
             )
                 :
             DefaultTabController(
-              length: 3,
+              length: 2,
               child: Scaffold(
                 appBar: AppBar(
                   leading: IconButton(
-                    icon: Icon(Icons.arrow_back),color: Colors.white,
+                    icon: const Icon(Icons.arrow_back),color: Colors.white,
                     onPressed: () {
                       Navigator.pop(context);
                     },
@@ -70,9 +71,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       imageUrl: details.imageUrl,
                       gifUrl: details.gifUrl,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Expanded(child: TabBarDetails(
-                      about: details.species[0].about[6].text,
+                      about: getAboutTextInLanguage(details.species[0].about, 'en'),
                       gifUrl: details.gifUrl,
                       height: details.height,
                       weight: details.weight,
@@ -91,8 +92,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
 }
 
-
-
+String getAboutTextInLanguage(List<PokemonAbout> aboutList, String languageCode) {
+  PokemonAbout? aboutLanguage = aboutList.firstWhere(
+          (about) => about.language == languageCode,
+      orElse: () => PokemonAbout(text: 'Unknown', language: 'Unknown')
+  );
+  return aboutLanguage.text;
+}
 
 Color getTypeColors(String type) {
   const typeColors = {
