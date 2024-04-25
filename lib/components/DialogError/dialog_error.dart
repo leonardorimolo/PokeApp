@@ -9,7 +9,7 @@ class ShowDialogError extends StatelessWidget {
     return AlertDialog(
       title: Row(
         children: [
-          Image.asset('assets/images/pokeball.png', height: 24, width: 24),
+          Image.asset('assets/images/pokeball_splash.png', height: 24, width: 24),
           const SizedBox(width: 10),
           const Text('Error', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.redAccent)),
         ],

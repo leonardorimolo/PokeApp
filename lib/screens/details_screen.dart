@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:poke_app/components/poke_details/custom_pokemon_details.dart';
 import '../components/DialogError/dialog_error.dart';
 import '../components/poke_details/custom_tab_bar_details.dart';
+import '../components/pokeball_spinner/pokeball_spinner.dart';
 import '../constants/color_themes.dart';
 import '../stores/pokemon_store.dart';
 
@@ -44,10 +45,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             return  widget.pokemonStore.isFetchingDetails ?
             Scaffold(
                 body: Center(
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
-                  ),
+                  child: Image.asset('assets/gifs/pika_loader.gif',width: 100, height: 100),
                 )
             )
                 :

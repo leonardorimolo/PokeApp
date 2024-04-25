@@ -1,6 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:poke_app/components/pokeball_spinner/pokeball_spinner.dart';
 
 
 import '../../constants/color_themes.dart';
@@ -67,8 +69,14 @@ class _CustomPokeCardState extends State<CustomPokeCard> {
                   bottom: 0,
                   top: 20,
                   right: 0,
-                  child: Image.network(
-                    widget.imageUrl ?? '',
+                  child: CachedNetworkImage(
+                    imageUrl: widget.imageUrl ?? '',
+                    placeholder: (context, url) => const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: PokeballSpinner(width: 50,height: 50,),
+                      ),
+                    ),
                     height: MediaQuery.of(context).size.height * 0.5,
                     fit: BoxFit.contain,
                     alignment: Alignment.centerRight,

@@ -1,12 +1,11 @@
-// ignore_for_file: unused_import
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:poke_app/components/cards/custom_poke_card.dart';
 import 'package:poke_app/constants/color_themes.dart';
 import '../components/DialogError/dialog_error.dart';
 import '../components/layout/font_style.dart';
+import '../components/pokeball_spinner/pokeball_spinner.dart';
 import '../stores/pokemon_store.dart';
 import 'details_screen.dart';
 
@@ -67,12 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
               return Column(
                 children: [
                   Expanded(
-                    child: pokemonStore.isFetchingList ? Center(
-                        child: CircularProgressIndicator(
-                          strokeWidth: 2,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors
-                              .yellow),
-                        )) : GridView.builder(
+                    child: pokemonStore.isFetchingList ? const Center(
+                        child: PokeballSpinner(width: 100,height: 100,)) : GridView.builder(
                       controller: _scrollController,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
@@ -108,10 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       visible: pokemonStore.isFetchingMore),
                   Visibility(
                     visible: pokemonStore.isFetchingMore,
-                    child: Center(child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
-                    )),
+                    child: Center(child: Image.asset('assets/gifs/pika_loader.gif',),),
                   )
                 ],
               );

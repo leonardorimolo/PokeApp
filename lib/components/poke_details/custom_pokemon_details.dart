@@ -2,8 +2,11 @@
 
 
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:poke_app/components/layout/font_style.dart';
+
+import '../pokeball_spinner/pokeball_spinner.dart';
 
 
 class CustomPokeDetails extends StatelessWidget {
@@ -34,7 +37,12 @@ class CustomPokeDetails extends StatelessWidget {
                 Text(' #$id', style: BOLD_TITLE_STYLE_WHITE),
               ],),
             ),
-            Image.network(imageUrl, height: MediaQuery.sizeOf(context).height*0.35, filterQuality: FilterQuality.high,),
+            CachedNetworkImage(imageUrl: imageUrl, height: MediaQuery.sizeOf(context).height*0.35, filterQuality: FilterQuality.high,placeholder: (context, url) => const Center(
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: PokeballSpinner(width: 50,height: 50,),
+              ),
+            ),),
           ],
         ),
     );
