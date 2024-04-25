@@ -1,16 +1,39 @@
-# poke_app
+# PokeApp
 
-A new Flutter project.
+## Visão Geral
+Este aplicativo permite aos usuários explorar um vasto universo Pokémon, com acesso a informações detalhadas sobre cada Pokémon. Os usuários podem visualizar estatísticas, habilidades e tipos, tudo em uma interface interativa e atraente.
 
-## Getting Started
+## Funcionalidades
+- **Listagem de Pokémon**: Os usuários podem navegar por uma lista extensiva de Pokémon, com a capacidade de carregar mais itens conforme avançam.
+- **Detalhes do Pokémon**: Ao selecionar um Pokémon específico, os usuários podem ver informações detalhadas como altura, peso, tipos e habilidades.
+- **Interface Temática**: O aplicativo possui animações e temas visuais inspirados no mundo Pokémon, oferecendo uma experiência envolvente.
 
-This project is a starting point for a Flutter application.
+## Tecnologias Utilizadas
+- **Flutter**: Utilizado para desenvolvimento do front-end, proporcionando uma experiência suave tanto em iOS quanto em Android.
+- **MobX**: Empregado para gerenciamento de estado, facilitando a comunicação entre a UI e a lógica de negócios.
+- **PokéAPI**: API utilizada para obter todas as informações detalhadas dos Pokémon.
 
-A few resources to get you started if this is your first Flutter project:
+## Como Começar
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Pré-requisitos
+- Flutter instalado em sua máquina. Para instalar o Flutter, siga o [guia oficial](https://flutter.dev/docs/get-started/install).
+- Um ambiente de desenvolvimento com Android Studio, VSCode ou IntelliJ IDEA configurado para desenvolvimento Flutter.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Instalação
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seunomeusuario/pokemon-app.git
+
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd pokemon-app
+
+3. Instale as dependências:
+   ```bash
+    flutter pub get
+
+4. Execute o aplicativo:
+    ```bash
+    flutter run
+
+
