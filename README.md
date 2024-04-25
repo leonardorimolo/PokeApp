@@ -22,7 +22,7 @@ Este aplicativo permite aos usuários explorar um vasto universo Pokémon, com a
 ### Instalação
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seunomeusuario/pokemon-app.git
+   git clone https://github.com/leonardorimolo/PokeApp.git
 
 2. Navegue até o diretório do projeto:
    ```bash
